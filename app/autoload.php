@@ -1,8 +1,4 @@
 <?php
-// Подключаем Twig
-require_once 'lib/Twig/Autoloader.php';
-Twig_Autoloader::register();
-
 // Запускаем автоподлкючение классов
 spl_autoload_register("standardAutoload");
 
@@ -22,7 +18,7 @@ function standardAutoload($className)
     ];
     $found = false;
     foreach ($dirs as $dir) {
-        $fileName = __DIR__ . '/' . $dir . '/' . $className . '.class.php';
+        $fileName = __DIR__ . '/' . $dir . '/' . $className . '.php';
         if (is_file($fileName)) {
             require_once($fileName);
             $found = true;

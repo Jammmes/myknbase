@@ -33,45 +33,33 @@ class App
       $url = isset($_GET['path']) ? $_GET['path'] : '';
       $url = explode("/", $url);
 
-        if (!empty($url[0]))
-        {// если явно указана страница в GET запросе, запишем ее в 'page'
+        if (!empty($url[0])){// если явно указана страница в GET запросе, запишем ее в 'page'
             $_GET['page'] = $url[0];
 
-            if (isset($url[1])) 
-            {// если кроме страницы в URL указан еще один блок
-                if (is_numeric($url[1])) 
-                { 
+            if (isset($url[1])) {// если кроме страницы в URL указан еще один блок
+                if (is_numeric($url[1])) { 
                     $_GET['id'] = $url[1];
-                } else 
-                { // если не цифровой, значит это действие, запишем его в 'action'
+                } else { // если не цифровой, значит это действие, запишем его в 'action'
                     $_GET['action'] = $url[1];
-                }
-                if (isset($url[2])) 
-                { // если есть в URL и третий блок, то это только ИД, запишем в 'id'
+                } if (isset($url[2])) { // если есть в URL и третий блок, то это только ИД, запишем в 'id'
                     $_GET['id'] = $url[2];
                 }
             }
-        }
-        else
-        {// контроллер по умолчанию
+        } else{// контроллер по умолчанию
             $_GET['page'] = 'catalog';
         }
 
-        if (isset($_GET['page']))
-        {
+        if (isset($_GET['page'])){
             $controllerName = ucfirst($_GET['page']) . 'Controller';
             //проверим - существует ли такой контроллер
             $fileController = Config::get('path_controller').'/'. $controllerName.'.class.php';
 
-            if (!file_exists($fileController))
-            {
+            if (!file_exists($fileController)){
                 $controllerName = 'NotFoundController';
             }
 
             $controller = new $controllerName();
-
             $view = $controller->view.'.html';
-
             $methodName = isset($_GET['action']) ? $_GET['action'] : 'index';
 
             $authorization = Auth::getInstance()->authorization();
@@ -88,17 +76,12 @@ class App
               ];                                 
  //print_r($data['authorization']);
    
-            if (!isset($_POST['AJAX']))
-            {
-              $loader = new Twig_Loader_Filesystem(Config::get('path_templates'));
-  
-              $twig = new Twig_Environment($loader);
-      
-              $template = $twig->loadTemplate($view);
-       
+            if (!isset($_POST['AJAX'])) {
+              $loader = new Twig_Loader_Filesystem(Config::get('path_templates')); 
+              $twig = new Twig_Environment($loader);      
+              $template = $twig->loadTemplate($view);      
               echo $template->render($data);
-            }else
-            {
+            }else {
               echo json_encode($data['content_data']);
             }
          

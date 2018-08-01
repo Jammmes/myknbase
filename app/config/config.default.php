@@ -2,10 +2,10 @@
 
 $config['db_user'] = 'root';
 $config['db_password'] = '123';
-$config['db_base'] = 'shop_l8';
+$config['db_base'] = 'mykndb';
 $config['db_host'] = '127.0.0.1';
 $config['db_charset'] = 'UTF-8';
-$config['pass_salt'] = 'php-salt';
+$config['pass_salt'] = 'kndb-salt';
 
 $config['path_root'] = __DIR__;
 $config['path_public'] = $config['path_root'] . '/../public';
