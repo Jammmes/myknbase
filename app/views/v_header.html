@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body class="container-fluid">
+
+    {% if authorization.user_id == 0 %}
+    <div class="alert alert-primary text-center m-0 d-flex align-items-center justify-content-center" id="mainHeader">
+                  <div class="display-4 text-primary">Интернет-магазин фруктов и овощей </div>
+    </div>
+    <ul class="nav nav-pills justify-content-center border border-primary rounded m-1 d-flex align-items-center">
+        <li class="nav-item ">
+            <a class="nav-link " href="/catalog/ ">Каталог товаров</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link " href="/orders/ ">Мои заказы
+            <span class="badge badge-primary" id = "ordersCount">{{ordersSummary.totalQ}} / {{ordersSummary.totalS}}</span>
+        </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link " href="/cart/ ">Моя корзина
+            <span class="badge badge-primary" id = "cartCount">{{cartSummary.totalQ}} / {{cartSummary.totalS}}</span>
+        </a>
+        </li>
+        <li>
+            <form class="nav-link form-inline border p-1" method="post" action="/auth/login/">
+                <label for="login" class="sr-only">Логин</label>
+                <input type="text" name="login" class="form-control m-2" placeholder="Login" value="">
+                <label for="pass" class="sr-only">Пароль</label>
+                <input type="password" name="password" class="form-control m-2" placeholder="Password" value="">
+                <button type="submit" class="btn btn-primary m-2">Вход</button>
+                <a href="/registration/" class="btn btn-danger">Регистрация</a>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-sm">Инфо</button>
+
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content p-4">
+                      Логины пользователей для тестирования: 
+                      <p>
+                      bob,dima.</p>
+                      <p>Логин администратора: eugen .</p>                    
+                      У всех логин = пароль.
+                    </div>
+                  </div>
+                </div>
+            </form>
+        </li>
+    </ul>
+        {% else %}
+    </div>
+      <div class="alert alert-success text-center m-0 d-flex align-items-center justify-content-center" id="mainHeader">
+          <div class="display-4 text-success">Интернет-магазин фруктов и овощей </div>
+           
+      </div>
+    
+    <ul class="nav nav-pills justify-content-center border border-primary rounded m-1">
+        <li class="nav-item ">
+            <a class="nav-link " href="/catalog/ ">Каталог товаров</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link " href="/orders/ ">Мои заказы
+            <span class="badge badge-primary" id = "ordersCount">{{ordersSummary.totalQ}} / {{ordersSummary.totalS}}</span>
+        </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link " href="/cart/ ">Моя корзина
+            <span class="badge badge-primary" id = "cartCount">{{cartSummary.totalQ}} / {{cartSummary.totalS}}</span>
+        </a>
+        </li>
+            {% if authorization.role == 'administrator' %}
+        <li class="nav-item ">
+            <a class="nav-link text-success " href="/admin/ ">Панель администрирования({{authorization.login}})</a>
+        </li>
+            {% else %}
+        <li class="nav-item ">
+            <a class="nav-link text-success" href="/user/ ">Личный кабинет({{authorization.login}})</a>
+        </li>
+            {% endif %}
+        <li class="nav-item ">
+            <a class="nav-link text-danger" href="/auth/logout/ ">Выход</a>
+        </li>
+  
+        {% endif %}
+    </ul>
