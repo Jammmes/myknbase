@@ -3,7 +3,7 @@
   require_once('autoload.php');
   //Запуск основного модуля
 try{
-    App::init();
+    Main::init();
 }
 catch (PDOException $e){
     echo "DB is not available";

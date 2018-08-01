@@ -4,7 +4,7 @@
  * Содержит методы для инициации соединения с БД
  * а так же роутер, направляющий вызовы на контроллеры
  */
-class App 
+class Main 
 {
     /**
      * Установка соединения с БД и запуск роутера
@@ -46,46 +46,34 @@ class App
                 }
             }
         } else{// контроллер по умолчанию
-            $_GET['page'] = 'catalog';
+            $_GET['page'] = 'articles';
         }
 
         if (isset($_GET['page'])){
             $controllerName = ucfirst($_GET['page']) . 'Controller';
             //проверим - существует ли такой контроллер
-            $fileController = Config::get('path_controller').'/'. $controllerName.'.class.php';
-
-            if (!file_exists($fileController)){
-                $controllerName = 'NotFoundController';
-            }
+            $fileController = Config::get('path_controller').'/'. $controllerName.'.php';
 
             $controller = new $controllerName();
-            $view = $controller->view.'.html';
+            $view = $controller->view;
             $methodName = isset($_GET['action']) ? $_GET['action'] : 'index';
 
             $authorization = Auth::getInstance()->authorization();
-            $cartSummary = Cart::getCartSummary($authorization['user_id']);
-            $ordersSummary = Orders::getOrdersSummary($authorization['user_id']);
             
             $data = 
               [
                 'content_data' => $controller->$methodName($_GET),
                 'title' => $controller->title,
-                'authorization' => $authorization,
-                'cartSummary' => $cartSummary,
-                'ordersSummary' => $ordersSummary
+                'authorization' => $authorization
               ];                                 
- //print_r($data['authorization']);
+ //print_r($data);
    
             if (!isset($_POST['AJAX'])) {
-              $loader = new Twig_Loader_Filesystem(Config::get('path_templates')); 
-              $twig = new Twig_Environment($loader);      
-              $template = $twig->loadTemplate($view);      
+              $template = new Template($view);       
               echo $template->render($data);
             }else {
               echo json_encode($data['content_data']);
             }
-         
-            Logger::getInstance()->logUrlHistory($controller->title,$authorization['user_id']); 
         }
         
     }
