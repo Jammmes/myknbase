@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Класс для работы с базой данных, паттерн singleton
+ * Класс для работы с базой данных, singleton
  */
-class Db 
+class DB 
 {
     private static $_instance = null;
 
-    private $Db;
+    private $DB;
 
     /**
      * Функция возвращает ссылку на единственный экземпляр класса
@@ -17,7 +17,7 @@ class Db
     public static function getInstance(){
         if(self::$_instance == null)
         {
-            self::$_instance = new Db();
+            self::$_instance = new DB();
         }
         return self::$_instance;
     }
@@ -41,7 +41,7 @@ class Db
     public function Connect($user, $password, $dbname, $host='127.0.0.1',$port = 3306)
     {
        $connectString = 'mysql:host=' . $host . ';port= ' . $port . ';dbname=' . $dbname . ';charset=UTF8;';
-       $this->Db = new PDO ($connectString, $user, $password,
+       $this->DB = new PDO ($connectString, $user, $password,
             [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // возвращать ассоциативные массивы
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // возвращать Exception в случае ошибки
@@ -60,7 +60,7 @@ class Db
      */
     public function Query($query, $params = [])
     {     
-        $res = $this->Db->prepare($query);
+        $res = $this->DB->prepare($query);
 
         $res->execute($params);
 
@@ -96,7 +96,7 @@ class Db
      */
     public function beginTransaction()
     {
-      $this->Db->beginTransaction();
+      $this->DB->beginTransaction();
     }
 
     /**
@@ -106,7 +106,7 @@ class Db
      */
     public function commit()
     {
-      $this->Db->commit();
+      $this->DB->commit();
     }
 
     /**
@@ -116,7 +116,7 @@ class Db
      */
     public function rollback()
     {
-      $this->Db->rollback();
+      $this->DB->rollback();
     }
 
     /**
@@ -126,7 +126,7 @@ class Db
      */
     public function lastInsertId()
     {
-      return  $this->Db->lastInsertId();
+      return  $this->DB->lastInsertId();
     }
 
 }

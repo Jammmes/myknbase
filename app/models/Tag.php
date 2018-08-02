@@ -4,6 +4,26 @@ class Tag extends Model
 {
     public function getData()
     {
-        return 'Категория из Модели';
+       $sql ="SELECT * FROM `tags`";
+       
+       return DB::getInstance()->Select($sql);
     }
+    
+    public function addTag($tagName)
+    {
+        
+    }
+    
+    public function deleteTag($id)
+    {
+        
+    }
+    
+    public function editTag($id,$tagName)
+    {
+        
+    }
+    
+    
 }
+

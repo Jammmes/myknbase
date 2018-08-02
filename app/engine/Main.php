@@ -68,9 +68,8 @@ class Main
               ];                                 
  //print_r($data);
    
-            if (!isset($_POST['AJAX'])) {
-              $template = new Template($view);       
-              echo $template->render($data);
+            if (!isset($_POST['AJAX'])) {    
+              echo Template::getInstance()->render($view,$data);
             }else {
               echo json_encode($data['content_data']);
             }
