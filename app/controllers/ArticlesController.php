@@ -7,7 +7,12 @@ class ArticlesController extends Controller
 {
     public $view = 'v_articles';
     public $title = 'Статьи';
-
+    protected $article;
+    
+    public function __construct()
+    {
+        $this->article = new Article();
+    }
 
     /**
      * Вывод статей
@@ -18,9 +23,17 @@ class ArticlesController extends Controller
      */
     public function index($var)
     {
-        $article = new Article();
-        
-        return $article->getData();
+        $authorization = Auth::getInstance()->authorization();
+        $user_id = $authorization['user_id'];
+        return $this->article->getData($user_id);
     }
+    
+    public function add()
+    {
+        $data = $_POST;
+                
+        return $this->article->addArticle($data);
+    }
+    
 
 }

@@ -46,7 +46,7 @@ class Main
                 }
             }
         } else{// контроллер по умолчанию
-            $_GET['page'] = 'tags';
+            $_GET['page'] = 'articles';
         }
 
         if (isset($_GET['page'])){

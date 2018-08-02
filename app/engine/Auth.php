@@ -97,11 +97,18 @@ class Auth
       $role = $result;
     }
     
+//    return
+//    [
+//      'user_id'=> $user_id,
+//      'role'=> $role,
+//      'login' => $login
+//    ];
+    
     return
     [
-      'user_id'=> $user_id,
-      'role'=> $role,
-      'login' => $login
+      'user_id'=> 1,
+      'role'=> 1,
+      'login' => 'eugen'
     ];
   }
 
