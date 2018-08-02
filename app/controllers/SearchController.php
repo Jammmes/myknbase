@@ -3,7 +3,7 @@
 class SearchController extends Controller
 {
     public $view = 'v_search';
-    public $title = 'Результаты поиска';
+    public $title = 'Результаты поиска:';
 
 
     /**
@@ -15,9 +15,13 @@ class SearchController extends Controller
      */
     public function index($var)
     {
-        $search = new Search();
+        $data = $_POST;
+        $search_str = $_POST['search_str'];
         
-        return $search->getData();
+        if ($search_str ){
+            $search = new Search();
+            return $search->searchData($data);
+        }
     }
     
     

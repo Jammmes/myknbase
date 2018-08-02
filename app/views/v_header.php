@@ -11,29 +11,39 @@
 </head>
 
 <body class="container-fluid">
-    <ul class="nav nav-pills justify-content-center border border-primary rounded m-1 d-flex align-items-center">
+    <ul class="nav nav-pills justify-content-center bg-secondary d-flex align-items-center">
         <li class="nav-item ">
-            <a class="nav-link " href="/tags/ ">Категории</a>
+            <a class="nav-link text-light" href="# ">Новая запись</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " href="/articles/ ">Статьи</a>    
+            <a class="nav-link text-light" href="/tags/ ">Категории</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " href="/login/ ">Вход</a>
+            <a class="nav-link text-light" href="/articles/ ">Статьи</a>    
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link text-light" href="# ">Вход</a>
         </li>
     </ul>
-    <div class="alert alert-primary text-center m-o" id="mainHeader">       
-        <form action="/search/" method="post">
+    <div class="bg-secondary text-center " id="mainHeader">       
+        <form class ="pb-3" action="/search/" method="post">
             <div class ="form-row d-flex justify-content-center">
                 <div class="col-xs-10 col-sm-10 col-md-6">
-                <input type="text" class ="form-control m-0" name = "search_str"/>
+                <input type="text" class ="form-control " name = "search_str"/>
                 </div>
-                <div class="col-xs-1 col-sm-1 col-md-1 m-0">
-                <button type="submit" class="btn btn-success">Искать</button>                
+                <div class="col-xs-1 col-sm-1 col-md-2">
+                    <div class="input-group">
+                        <select name = "where" class="custom-select" id="inputGroupSelect04">
+                            <option value="0">Везде</option>
+                            <option value="1">В категориях</option>
+                            <option value="2">В статьях</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Искать</button>
+                        </div>
+                    </div>               
                 </div>
             </div>
         </form> 
-
-</form>
     </div>
     
