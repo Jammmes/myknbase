@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 01 2018 г., 20:32
+-- Время создания: Авг 02 2018 г., 15:17
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.2.0
 
@@ -109,7 +109,16 @@ CREATE TABLE IF NOT EXISTS `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `status`
+--
+
+INSERT INTO `status` (`id`, `title`) VALUES
+(1, '?'),
+(2, '!'),
+(3, '0');
 
 -- --------------------------------------------------------
 
@@ -121,8 +130,27 @@ DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `title` (`title`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `tags`
+--
+
+INSERT INTO `tags` (`id`, `title`) VALUES
+(10, '.htaccess'),
+(7, 'ajax'),
+(5, 'composer'),
+(8, 'git'),
+(9, 'gulp'),
+(2, 'jquery'),
+(1, 'js'),
+(3, 'php'),
+(4, 'phpunit'),
+(6, 'singleton'),
+(12, 'подключение_классов'),
+(11, 'рекурсия');
 
 -- --------------------------------------------------------
 
@@ -138,7 +166,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` int(11) NOT NULL,
   `comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `login`, `password`, `role`, `comment`) VALUES
+(1, 'bob', 'bob', 1, 'first user');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
