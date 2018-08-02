@@ -6,7 +6,6 @@
 class ArticlesController extends Controller
 {
     public $view = 'v_articles';
-
     public $title = 'Статьи';
 
 

@@ -11,18 +11,29 @@
 </head>
 
 <body class="container-fluid">
-
-    <div class="alert alert-primary text-center m-0 d-flex align-items-center justify-content-center" id="mainHeader">
-                  <div class="display-4 text-primary">Моя база знаний</div>
-    </div>
     <ul class="nav nav-pills justify-content-center border border-primary rounded m-1 d-flex align-items-center">
         <li class="nav-item ">
-            <a class="nav-link " href="/articles/ ">Статьи</a>
+            <a class="nav-link " href="/tags/ ">Категории</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " href="/tags/ ">Категории</a>
+            <a class="nav-link " href="/articles/ ">Статьи</a>    
         </li>
         <li class="nav-item ">
             <a class="nav-link " href="/login/ ">Вход</a>
         </li>
     </ul>
+    <div class="alert alert-primary text-center m-o" id="mainHeader">       
+        <form action="/search/" method="post">
+            <div class ="form-row d-flex justify-content-center">
+                <div class="col-xs-10 col-sm-10 col-md-6">
+                <input type="text" class ="form-control m-0" name = "search_str"/>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 m-0">
+                <button type="submit" class="btn btn-success">Искать</button>                
+                </div>
+            </div>
+        </form> 
+
+</form>
+    </div>
+    

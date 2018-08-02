@@ -4,6 +4,6 @@ class Article extends Model
 {
     public function getData()
     {
-        return 'СТАТЬЯ из Модели';
+        return 'Статья из Модели';
     }
 }
