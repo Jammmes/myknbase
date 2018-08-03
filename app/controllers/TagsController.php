@@ -5,11 +5,13 @@ class TagsController extends Controller
     public $view = 'v_tags';
     public $title = 'Категории';
     protected $tag;
+    protected $userData;
     
     
     public function __construct()
     {
-        $this->tag = new Tag();  
+        $this->tag = new Tag(); 
+        $this->userData = Auth::getInstance()->authorization();
     }
 
 
@@ -22,7 +24,8 @@ class TagsController extends Controller
      */
     public function index($var)
     {   
-        return $this->tag->getData();
+        $user_id = $this->userData['user_id'];
+        return $this->tag->getTags($user_id);
     }
     
     /**
@@ -33,8 +36,16 @@ class TagsController extends Controller
      */
     public function add()
     {
-        $tagName = $_POST['tagName'];               
-        return $this->tag->addTag($tagName);
+        $tagName = $_POST['tagName'];  
+        $user_id = $this->userData['user_id'];
+        $result = $this->tag->addTag($tagName,$user_id);
+        $tagList = $this->tag->getTags($user_id);
+        
+        if($result['error']=='none'){
+            return $tagList;
+        }else{
+            return [$tagList,'error'=>$result['error']];
+        } 
     }
     
     /**

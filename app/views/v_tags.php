@@ -12,7 +12,7 @@
             </form>
         </div>
         <!--Шапка-->
-        <div class="row border bg-dark text-light">
+        <div class="row border bg-dark text-light text-center">
             <div class="col-md-7 col-xs-7 col-sm-7">Имя метки</div>
             <div class="col-md-1 col-xs-1 col-sm-1">Кол-во</div>
             <div class="col-md-1 col-xs-1 col-sm-1">Просмотр</div>
