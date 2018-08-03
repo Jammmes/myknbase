@@ -13,16 +13,16 @@
 <body class="container-fluid">
     <ul class="nav nav-pills justify-content-center bg-secondary d-flex align-items-center">
         <li class="nav-item ">
-            <a class="nav-link text-light" href="/articles/add/">Новая запись</a>
+            <a class="nav-link text-light" href="/article/add/">Новая запись</a>
         </li>
         <li class="nav-item ">
             <a class="nav-link text-light" href="/tags/ ">Категории</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link text-light" href="/articles/ ">Статьи</a>    
+            <a class="nav-link text-light" href="/catalog/ ">Статьи</a>    
         </li>
         <li class="nav-item ">
-            <a class="nav-link text-light" href="/articles/ ">Вопросы</a>    
+            <a class="nav-link text-light" href="/catalog/showQuestions/ ">Вопросы</a>    
         </li>
         <li class="nav-item ">
             <a class="nav-link text-light" href="# ">Вход</a>
