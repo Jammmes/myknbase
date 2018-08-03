@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 02 2018 г., 21:21
+-- Время создания: Авг 03 2018 г., 14:59
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.2.0
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `status` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Дамп данных таблицы `articles`
@@ -48,7 +48,8 @@ CREATE TABLE IF NOT EXISTS `articles` (
 
 INSERT INTO `articles` (`id`, `title`, `text`, `created_at`, `changed_at`, `status`, `user_id`) VALUES
 (1, 'Первая тестовая статья', 'текстстатьитекстстатьи текст', '2018-08-02 16:25:13', '2018-08-02 17:45:13', 2, 1),
-(2, 'Вторая тестовая статья', 'текстстатьитекстстатьи текст', '2018-08-02 16:32:33', '2018-08-02 17:32:33', 1, 1);
+(2, 'Вторая тестовая статья', 'текстстатьитекстстатьи текст', '2018-08-02 16:32:33', '2018-08-02 17:32:33', 1, 1),
+(3, 'Третья тестовая статья', 'текстстатьитекстстатьи текст', '2018-08-03 08:19:16', '2018-08-03 09:20:04', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `link_tags` (
   `tag_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Дамп данных таблицы `link_tags`
@@ -114,7 +115,8 @@ INSERT INTO `link_tags` (`id`, `tag_id`, `article_id`) VALUES
 (1, 3, 1),
 (2, 2, 2),
 (3, 5, 1),
-(4, 4, 1);
+(4, 4, 1),
+(5, 6, 3);
 
 -- --------------------------------------------------------
 
