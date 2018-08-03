@@ -25,7 +25,7 @@ class Tag extends Model
         
         $id = $data ? $data[0]['id']: 0;
         
-        if($id > 0){// что она должна возвращать то? тру или фальш
+        if($id == 0){
             $result = true;
         }
         

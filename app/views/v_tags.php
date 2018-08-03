@@ -10,6 +10,10 @@
                 </div>
                 <button type="submit" class="btn btn-warning mb-2">Добавить</button>
             </form>
+    <?php 
+    $err = isset($content_data['error'])? $content_data['error'] :'';
+     echo $err;
+     ;?> 
         </div>
         <!--Шапка-->
         <div class="row border bg-dark text-light text-center">

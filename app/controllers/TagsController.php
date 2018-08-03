@@ -41,10 +41,13 @@ class TagsController extends Controller
         $result = $this->tag->addTag($tagName,$user_id);
         $tagList = $this->tag->getTags($user_id);
         
+        // ПЕРЕСМОТРЕТЬ - ПОКА ТУТ ХЕРНЯ ПОЛУЧИЛАСЬ. ПЫАТЕТСЯ РЕНДЕРИТЬ ПУСТОТУ
         if($result['error']=='none'){
             return $tagList;
         }else{
-            return [$tagList,'error'=>$result['error']];
+            $rs = $tagList;
+            $rs['error'] = $result['error'];
+            return $rs;
         } 
     }
     
