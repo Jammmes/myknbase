@@ -11,7 +11,7 @@ class Tag extends Model
     
     public function addTag($tagName)
     {
-        
+        //Сделать проверку на дубли
     }
     
     public function deleteTag($id)

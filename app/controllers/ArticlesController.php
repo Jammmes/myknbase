@@ -30,9 +30,14 @@ class ArticlesController extends Controller
     
     public function add()
     {
-        $data = $_POST;
-                
+        $data = $_POST;                
         return $this->article->addArticle($data);
+    }
+    
+    public function open()
+    {
+        $id = $_POST['id'];        
+        return $this->article->openArticle($id);
     }
     
 

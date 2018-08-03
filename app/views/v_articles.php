@@ -1,16 +1,10 @@
 <?php include 'v_header.php' ;?>
 
-<?php foreach($content_data as $row) :?>
-<div><?= $row['id'];?> </div>
-<div><?= $row['title'];?> </div>
-<div><?= $row['text'];?> </div>
-<div><?= $row['status'];?> </div>
-<div><?= $row['tags'];?> </div>
-<div><?= $row['created_at'];?> </div>
-<div><?= $row['changed_at'];?> </div>
-<div><?= $row['login'];?> </div>
-    
-
-    <?php endforeach;?>
-
+<div class="d-flex justify-content-center">
+    <div class="row">
+        <?php foreach($content_data as $row) :?>
+            <?php echo Template::getInstance()->render('v_article_minCard',$row);?>   
+        <?php endforeach;?>
+    </div>
+</div>
 <?php include 'v_footer.php';?>

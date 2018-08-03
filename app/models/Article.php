@@ -21,17 +21,17 @@ class Article extends Model
     public function addArticle($data)
     {
         $date = date('Y-m-d H:i:s');
-        
-        $query="INSERT INTO `articles`(`id`, `title`, `text`, `created_at`,
+        // Сделать транзацией, т.к. нужны будут таблицы ling_tags, link_images, link_files
+        $query1="INSERT INTO `articles`(`id`, `title`, `text`, `created_at`,
         `status`, `user_id`) VALUES (NULL,'Вторая тестовая статья',
         'текстстатьитекстстатьи текст',?,1,1)";
         
-        DB::getInstance()->Query($query,[$date]);
+        DB::getInstance()->Query($query1,[$date]);
         
     }
     
     
-    public function getArticlesByTag($id)
+    public function openArticle($id)
     {
         return ;
     }
