@@ -4,9 +4,14 @@ class Tag extends Model
 {
     public function getTags($user_id)
     {
-       $sql ="SELECT * FROM `tags` WHERE `user_id` =?";
+        $sql = "SELECT COUNT(lt.tag_id) AS quant, t.id, t.title
+        FROM `link_tags` lt
+        RIGHT JOIN `tags` t  ON lt.tag_id = t.id 
+        RIGHT JOIN `users` u ON u.id = t.user_id 
+        WHERE u.id = ?
+        GROUP BY t.id ORDER BY quant DESC";
        
-       return DB::getInstance()->Select($sql,[$user_id]);
+       return['error'=>'','content'=> DB::getInstance()->Select($sql,[$user_id])];
     }
     
     /** Проверка нового тега
@@ -47,11 +52,11 @@ class Tag extends Model
             $query = "INSERT INTO `tags` (`id`,`title`,`user_id`)
             VALUES (NULL, ?,?)";
             $result = 
-                    ['error'=>'none', 
-                    DB::getInstance()->Query($query,[$tagName,$user_id])
+                    ['error'=>'', 
+                    'content' => DB::getInstance()->Query($query,[$tagName,$user_id])
                     ];
         }else{
-            $result = ['error'=>'The tag checking is failure'];
+            $result = ['error'=>"The tag '".$tagName."' is already exists"];
         }
         
         return $result;
@@ -66,7 +71,7 @@ class Tag extends Model
     {
         
     }
-    
+      
     
 }
 
