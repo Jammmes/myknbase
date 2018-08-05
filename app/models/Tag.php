@@ -67,9 +67,23 @@ class Tag extends Model
         
     }
     
-    public function editTag($id,$tagName)
+    // Сюда нужно передавать все же ИД тега, а не юзера. И проверку значит переделать
+    public function editTag($user_id,$tagName)
     {
+        $result = [];
+        $isCorrect = $this->checkNewTag($tagName, $user_id);      
+
+        if ($isCorrect){
+            $query_ = "UPDATE `tags` SET `title` = ? WHERE `user_id` = ?";
+            $result = 
+                    ['error'=>'', 
+                    'content' => DB::getInstance()->Query($query,[$tagName,$user_id])
+                    ];
+        }else{
+            $result = ['error'=>"The tag '".$tagName."' is already exists"];
+        }
         
+        return $result;    
     }
       
     
