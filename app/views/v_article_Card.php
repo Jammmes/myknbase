@@ -23,7 +23,7 @@
                     <input type="text" name="status" class="form-control mb-2 text-center text-warning bg-dark" value="<?= $content_data[0]['status'];?>" />                    
                 </div>
             </div>
-            <textarea name = "text" class="form-control mb-2 "><?= $content_data[0]['text'];?></textarea>
+            <textarea name = "text" class="form-control mb-2 " rows="25"><?= $content_data[0]['text'];?></textarea>
             <input type="text" name="tags" class="form-control mb-2 text-light bg-dark" value="<?= $content_data[0]['tags'];?>" />
             <button class="btn btn-sm btn-success" type="submit">Сохранить</button>
             <a class="btn btn-sm btn-success" href="/catalog/">Вернуться в каталог</a>
