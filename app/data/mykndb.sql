@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 03 2018 г., 14:59
+-- Время создания: Авг 05 2018 г., 20:56
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.2.0
 
@@ -40,16 +40,16 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `status` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Дамп данных таблицы `articles`
 --
 
 INSERT INTO `articles` (`id`, `title`, `text`, `created_at`, `changed_at`, `status`, `user_id`) VALUES
-(1, 'Первая тестовая статья', 'текстстатьитекстстатьи текст', '2018-08-02 16:25:13', '2018-08-02 17:45:13', 2, 1),
-(2, 'Вторая тестовая статья', 'текстстатьитекстстатьи текст', '2018-08-02 16:32:33', '2018-08-02 17:32:33', 1, 1),
-(3, 'Третья тестовая статья', 'текстстатьитекстстатьи текст', '2018-08-03 08:19:16', '2018-08-03 09:20:04', 1, 1);
+(1, 'Настройка phpunit и composer', 'Давайте установим PHPUnit в нашей системе:\r\n\r\nЗагрузите его: PHPUnit распространяется в PHAR(PHp ARhive) файле. Скачать можно здесь.\r\nДобавьте путь к нему в системную переменную $PATH: после скачивания PHAR файла, убедитесь, что он является запускаемым (executable) и путь, где он находится, прописан в системной переменной $PATH. Т.о. вы сможете запускать его из любого места.\r\nЕсли вы работаете на Unix-подобной системе, то это вы можете сделать следующими командами:\r\n\r\n$ wget https://phar.phpunit.de/phpunit.phar\r\n$ chmod +x phpunit.phar\r\n$ sudo mv phpunit.phar /usr/local/bin/phpunit\r\nЕсли вы сделали всё верно, то вы сможете увидеть версию установленного PHPUnit, набрав в вашем терминале команду:\r\n\r\n$ phpunit --version', '2018-08-02 16:25:13', '2018-08-03 16:14:18', 2, 1),
+(2, 'Подключение jquery', 'текстстатьитекстстатьи текст', '2018-08-02 16:32:33', '2018-08-03 16:14:47', 1, 1),
+(3, 'Как сделать singleton', 'private static $_instance = null;\r\n\r\n    private $DB;\r\n\r\n    /**\r\n     * Функция возвращает ссылку на единственный экземпляр класса\r\n     *\r\n     * @return Db\r\n     */\r\n    public static function getInstance(){\r\n        if(self::$_instance == null)\r\n        {\r\n            self::$_instance = new DB();\r\n        }\r\n        return self::$_instance;\r\n    }\r\n\r\n    // Защита от создания второго экземпляра класса\r\n    private function __construct(){}\r\n    private function __sleep(){}\r\n    private function __wakeup(){}\r\n    private function __clone(){}', '2018-08-03 08:19:16', '2018-08-03 16:15:31', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `link_tags` (
   `tag_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Дамп данных таблицы `link_tags`
@@ -116,7 +116,8 @@ INSERT INTO `link_tags` (`id`, `tag_id`, `article_id`) VALUES
 (2, 2, 2),
 (3, 5, 1),
 (4, 4, 1),
-(5, 6, 3);
+(5, 6, 3),
+(6, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -150,27 +151,27 @@ DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `title` (`title`)
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Дамп данных таблицы `tags`
 --
 
-INSERT INTO `tags` (`id`, `title`) VALUES
-(10, '.htaccess'),
-(7, 'ajax'),
-(5, 'composer'),
-(8, 'git'),
-(9, 'gulp'),
-(2, 'jquery'),
-(1, 'js'),
-(3, 'php'),
-(4, 'phpunit'),
-(6, 'singleton'),
-(12, 'подключение_классов'),
-(11, 'рекурсия');
+INSERT INTO `tags` (`id`, `title`, `user_id`) VALUES
+(1, 'js', 1),
+(2, 'jquery', 1),
+(3, 'php', 1),
+(4, 'phpunit', 1),
+(5, 'composer', 1),
+(6, 'singleton', 1),
+(7, 'ajax', 1),
+(8, 'git', 1),
+(9, 'gulp', 1),
+(10, '.htaccess', 1),
+(11, 'рекурсия', 1),
+(12, 'подключение_классов', 1);
 
 -- --------------------------------------------------------
 

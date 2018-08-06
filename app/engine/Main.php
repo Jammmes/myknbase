@@ -66,7 +66,7 @@ class Main
                 'title' => $controller->title,
                 'authorization' => $authorization
               ];                                 
- //print_r($data);
+ //print_r($data['content_data']);
    
             if (!isset($_POST['AJAX'])) {    
               echo Template::getInstance()->render($view,$data);

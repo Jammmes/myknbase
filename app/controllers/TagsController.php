@@ -39,16 +39,10 @@ class TagsController extends Controller
         $tagName = $_POST['tagName'];  
         $user_id = $this->userData['user_id'];
         $result = $this->tag->addTag($tagName,$user_id);
-        $tagList = $this->tag->getTags($user_id);
+        $content = $this->tag->getTags($user_id);
         
-        // ПЕРЕСМОТРЕТЬ - ПОКА ТУТ ХЕРНЯ ПОЛУЧИЛАСЬ. ПЫАТЕТСЯ РЕНДЕРИТЬ ПУСТОТУ
-        if($result['error']=='none'){
-            return $tagList;
-        }else{
-            $rs = $tagList;
-            $rs['error'] = $result['error'];
-            return $rs;
-        } 
+        $content['error'] = $result['error'];
+        return $content;
     }
     
     /**
@@ -71,9 +65,12 @@ class TagsController extends Controller
      */
     public function edit()
     {
-        $data = $_POST;                
-        
-        return $this->tag->editTag($data['id'],$data['tagName']);
+        $data = $_POST;   
+        $user_id = $this->userData['user_id'];
+        $result = $this->tag->editTag($user_id ,$data['tagName']);
+        $content = $this->tag->getTags($user_id);
+        $content['error'] = $result['error'];
+        return $content;
     } 
 }
 
