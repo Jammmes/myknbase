@@ -19,7 +19,7 @@
             </form> 
         </div>
         <div class="col-md-1 col-xs-1 col-sm-1 text-center">
-            <form action="/Articles/getArticlesByTag/" method="post">
+            <form action="/Catalog/getArticlesByTag/" method="post">
                 <input type = "hidden" name="id" value="<?=$id;?>"/>
                 <button type="submit" class="btn btn-outline-success btn-sm">Просмотр</button>
             </form>

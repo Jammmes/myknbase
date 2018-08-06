@@ -45,6 +45,7 @@ class CatalogController extends Controller
         
     public function getArticlesByTag()
     {
-        
+        $id = $_POST['id'];
+        return $this->catalog->getArticlesByTag($id);
     }
 }
