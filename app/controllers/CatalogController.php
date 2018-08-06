@@ -41,4 +41,10 @@ class CatalogController extends Controller
         $user_id = $this->userData['user_id']; 
         return $this->catalog->getArticles($user_id,'1'); 
     }
+    
+        
+    public function getArticlesByTag()
+    {
+        
+    }
 }

@@ -6,6 +6,7 @@
                     <input class="form-control" type = "text" name="tagName" value="<?=$title;?>"/>
                     </div>
                     <div class="col-md-1 col-xs-1 col-sm-1 text-center"><?=$quant;?></div>
+                    <input type = "hidden" name="id" value="<?=$id;?>"/>
                     <div class="col-md-1 col-xs-1 col-sm-1 text-center">
                     <button type="submit" class="btn btn-outline-dark btn-sm">Изменить</button>
                     </div>

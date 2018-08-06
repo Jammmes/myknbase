@@ -53,8 +53,12 @@ class TagsController extends Controller
      */
     public function delete()
     {
-        $data = $_POST['id'];                
-        return $this->tag->deleteTag($id);
+        $id = $_POST['id'];                
+        $result = $this->tag->deleteTag($id);
+        $user_id = $this->userData['user_id'];
+        $content = $this->tag->getTags($user_id);
+        $content['error'] = $result['error'];
+        return $content;
     }
     
     /**
@@ -67,7 +71,7 @@ class TagsController extends Controller
     {
         $data = $_POST;   
         $user_id = $this->userData['user_id'];
-        $result = $this->tag->editTag($user_id ,$data['tagName']);
+        $result = $this->tag->editTag($data['id'],$user_id ,$data['tagName']);
         $content = $this->tag->getTags($user_id);
         $content['error'] = $result['error'];
         return $content;

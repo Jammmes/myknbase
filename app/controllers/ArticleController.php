@@ -40,8 +40,7 @@ class ArticleController extends Controller
             return $result;
         }else{
             return ['Error'=>'Ошибка при сохранении статьи'];
-        }
-        
+        }        
     }
 
 }

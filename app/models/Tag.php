@@ -64,20 +64,21 @@ class Tag extends Model
     
     public function deleteTag($id)
     {
-        
+       $query = "DELETE FROM `tags` WHERE `id` = ?";
+       return ['error' =>'','content'=>DB::getInstance()->Query($query,[$id])];
+       
     }
     
-    // Сюда нужно передавать все же ИД тега, а не юзера. И проверку значит переделать
-    public function editTag($user_id,$tagName)
+    public function editTag($id, $user_id,$tagName)
     {
         $result = [];
         $isCorrect = $this->checkNewTag($tagName, $user_id);      
 
         if ($isCorrect){
-            $query_ = "UPDATE `tags` SET `title` = ? WHERE `user_id` = ?";
+            $query = "UPDATE `tags` SET `title` = ? WHERE `id` = ?";
             $result = 
                     ['error'=>'', 
-                    'content' => DB::getInstance()->Query($query,[$tagName,$user_id])
+                    'content' => DB::getInstance()->Query($query,[$tagName,$id])
                     ];
         }else{
             $result = ['error'=>"The tag '".$tagName."' is already exists"];
