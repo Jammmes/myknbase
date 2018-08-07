@@ -76,5 +76,13 @@ class TagsController extends Controller
         $content['error'] = $result['error'];
         return $content;
     } 
+    
+    public function find()
+    {
+        $data = $_POST['tag'];
+        return 'mega'.$data;
+    }
+    
+    
 }
 

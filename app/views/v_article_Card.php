@@ -14,17 +14,18 @@
             </div>
             <div class="row">
                 <div class="col-md-10">
-                    <input type="text" name="title" class="form-control mb-2 text-light bg-dark text-center " value="<?= $content_data[0]['title'];?>"/>                    
+                    <input type="text" name="title" class="form-control mb-2 text-warning bg-dark text-center " value="<?= $content_data[0]['title'];?>"/>                    
                 </div>
                 <div class="col-md-1">
-                    <input type="text" name="id" class="form-control mb-2 text-center text-light bg-dark" value="<?= $content_data[0]['id'];?>" />                    
+                    <input type="text" name="id" class="form-control mb-2 text-center text-light bg-dark" readonly value="<?= $content_data[0]['id'];?>" />                    
                 </div>
                 <div class="col-md-1">
-                    <input type="text" name="status" class="form-control mb-2 text-center text-warning bg-dark" value="<?= $content_data[0]['status'];?>" />                    
+                    <input type="text" name="status" class="form-control mb-2 text-center text-light bg-dark" value="<?= $content_data[0]['status'];?>" />                    
                 </div>
             </div>
             <textarea name = "text" class="form-control mb-2 " rows="25"><?= $content_data[0]['text'];?></textarea>
-            <input type="text" name="tags" class="form-control mb-2 text-light bg-dark" value="<?= $content_data[0]['tags'];?>" />
+            <input type="text" name="tags" list="tagList" class="form-control mb-2 text-warning bg-dark" id="inpArticleTags" value="<?= $content_data[0]['tags'];?>" />
+            <datalist id="tagList"></datalist>
             <button class="btn btn-sm btn-success" type="submit">Сохранить</button>
             <a class="btn btn-sm btn-success" href="/catalog/">Вернуться в каталог</a>
         </form>            

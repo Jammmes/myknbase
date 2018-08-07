@@ -1,5 +1,79 @@
 $(function() {
 
+
+    //Подбор тегов для статьи
+    
+    //inpArticleTags
+    
+      // установим обработчик на поле ввода
+    $('#inpArticleTags').on('focus', function () {
+      var inputText = $(this).val();
+      
+      console.log(inputText);
+      //
+      if (inputText.length >= 2) {
+        loadTags($(this));
+      };
+    });
+
+  
+    /** По полному или частичному совпадению создается запрос для создания списка
+     * подходящих тегов
+     * 
+     * @param object obj ссылка на input, содержащий наименование или часть тега
+     */
+    function loadTags(obj) {
+      var tag = obj.val();
+      // создаем AJAX запрос
+      console.log(tag);
+      $.ajax({
+        url: '/Tags/find/',
+        method: 'post',
+        data:{
+            AJAX:'AJAX',
+            tag: tag
+        },
+        
+        success: function (data) {
+          // передаем JSON и ссылку на input в функцию для обработки
+          createTagslist(data, obj);
+        }
+      });
+    };
+
+    /** Подставляем список тегов в поле ввода
+     * 
+     * 
+     * @param json data - список тегов
+     * @param object obj  - ссылка на input
+     */
+    function createTagslist(data, obj) {
+      var inputTag = obj;
+      var $tagList = $('#tagList');
+      // сначала очистим список значений для input-а
+      $tagList.empty();
+      var tags = data;//JSON.parse(data);
+      // проверка на наличие найденных тегов
+      if (tags['result'] === 0) {
+        inputTag.val('');
+      } else {
+        // в цикле дополним список для input данными
+        tags.forEach(function (element) {
+          var tagName = element['tagName'];
+          var $option = $('<option/>').attr({ "label": 'тег', "value": tagName });
+          $tagList.append($option);
+        })
+      }
+    }
+
+    
+    
+    
+    
+    
+
+
+
     // ТОВАРЫ
 
     $('#goodsList').each(function()

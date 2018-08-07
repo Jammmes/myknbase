@@ -27,12 +27,9 @@ class ArticleController extends Controller
     } 
     
     public function edit()
-    {
-     
-        $result = null;
-        
-        $data = $_POST;
-        
+    {   
+        $result = null;        
+        $data = $_POST;        
         $result = $this->article->edit($data);
   
         if ($result){
@@ -41,6 +38,20 @@ class ArticleController extends Controller
         }else{
             return ['Error'=>'Ошибка при сохранении статьи'];
         }        
+    }
+    
+    public function newArticle()
+    {
+        $result[]=[
+            'created_at'=>'',
+            'changed_at'=>'',
+            'id'=>'',
+            'status'=>'',
+            'title'=>'',
+            'text'=>'',
+            'tags'=>''
+        ];
+        return $result;
     }
 
 }
