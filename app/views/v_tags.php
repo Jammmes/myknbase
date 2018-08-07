@@ -29,13 +29,11 @@
                         <div class ="col-md-1 col-xs-1 col-sm-1">
                             Кол-во
                         </div>
-                        <div class ="col-md-1 col-xs-1 col-sm-1">
-                            Просмотр
-                        </div>
+                        <div class ="col-md-1 col-xs-1 col-sm-1"></div>
                     </div>
             </div>
-            <div class="col-md-1 col-xs-1 col-sm-1">Изменить</div>
-            <div class="col-md-1 col-xs-1 col-sm-1">Удалить</div>
+            <div class="col-md-1 col-xs-1 col-sm-1"></div>
+            <div class="col-md-1 col-xs-1 col-sm-1"></div>
 <!--            <div class="col-md-2 col-xs-2 col-sm-1"></div>-->
         </div>
         <!--ДАнные-->
