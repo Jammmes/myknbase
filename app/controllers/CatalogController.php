@@ -5,7 +5,7 @@
  */
 class CatalogController extends Controller
 {
-    public $view = 'v_articles';
+    public $view = 'v_catalog';
     public $title = 'Каталог статей';
     protected $catalog;
     protected $userData;
