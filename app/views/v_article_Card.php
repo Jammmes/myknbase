@@ -25,7 +25,7 @@
                     <input type="text" name="status" placeholder = "!?" class="form-control mb-2 text-center text-light bg-dark" id="inpArticleStatus" value="<?= $content_data[0]['status'];?>" />                    
                 </div>
             </div>
-            <textarea name = "text" class="form-control mb-2 " rows="22"><?= $content_data[0]['text'];?></textarea>
+            <textarea name = "text" placeholder = "Текст статьи" class="form-control mb-2 " rows="22"><?= $content_data[0]['text'];?></textarea>
 
             <button class="btn btn-sm btn-success" type="submit">Сохранить</button>
             <a class="btn btn-sm btn-success" href="/catalog/">Вернуться в каталог</a>

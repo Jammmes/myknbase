@@ -56,16 +56,14 @@ $(function() {
         $tagList.empty();
         var tags = JSON.parse(data);
        
-        console.log(tags);
+        //console.log(tags);
       
         // в цикле дополним список для input данными
         tags.forEach(function (element) {
             console.log(element);          
           var tagName = element['title'];
           var $option = $('<option/>').attr({ "value": tagName });
-          $tagList.append($option);
-          
-          
+          $tagList.append($option);  
         })
     }
 
