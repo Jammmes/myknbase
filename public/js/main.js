@@ -6,10 +6,11 @@ $(function() {
     //inpArticleTags
     
       // установим обработчик на поле ввода
-    $('#inpArticleTags').on('focus', function () {
+    $('#inpArticleTags').on('input', function ()
+    {
       var inputText = $(this).val();
       
-      console.log(inputText);
+      //console.log(inputText);
       //
       if (inputText.length >= 2) {
         loadTags($(this));
@@ -17,25 +18,24 @@ $(function() {
     });
 
   
-    /** По полному или частичному совпадению создается запрос для создания списка
+    /** По полному или частичному совпадению создается запрос наличие в БД
      * подходящих тегов
      * 
      * @param object obj ссылка на input, содержащий наименование или часть тега
      */
-    function loadTags(obj) {
+    function loadTags(obj)
+    {
       var tag = obj.val();
-      // создаем AJAX запрос
-      console.log(tag);
+      //console.log(tag);
       $.ajax({
         url: '/Tags/find/',
         method: 'post',
         data:{
             AJAX:'AJAX',
             tag: tag
-        },
-        
-        success: function (data) {
-          // передаем JSON и ссылку на input в функцию для обработки
+        },      
+        success: function (data)
+        {
           createTagslist(data, obj);
         }
       });
@@ -47,23 +47,26 @@ $(function() {
      * @param json data - список тегов
      * @param object obj  - ссылка на input
      */
-    function createTagslist(data, obj) {
-      var inputTag = obj;
-      var $tagList = $('#tagList');
-      // сначала очистим список значений для input-а
-      $tagList.empty();
-      var tags = data;//JSON.parse(data);
-      // проверка на наличие найденных тегов
-      if (tags['result'] === 0) {
-        inputTag.val('');
-      } else {
+    function createTagslist(data, obj)
+    {
+        var inputTag = obj;
+        var $tagList = $('#tagList');
+        // сначала очистим список значений для input-а
+       // console.log(data);
+        $tagList.empty();
+        var tags = JSON.parse(data);
+       
+        console.log(tags);
+      
         // в цикле дополним список для input данными
         tags.forEach(function (element) {
-          var tagName = element['tagName'];
-          var $option = $('<option/>').attr({ "label": 'тег', "value": tagName });
+            console.log(element);          
+          var tagName = element['title'];
+          var $option = $('<option/>').attr({ "value": tagName });
           $tagList.append($option);
+          
+          
         })
-      }
     }
 
     

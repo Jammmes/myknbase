@@ -80,7 +80,10 @@ class TagsController extends Controller
     public function find()
     {
         $data = $_POST['tag'];
-        return 'mega'.$data;
+        $user_id = $this->userData['user_id'];
+        $result = $this->tag->findTags($data,$user_id);
+
+        return $result;
     }
     
     

@@ -87,6 +87,22 @@ class Tag extends Model
         return $result;    
     }
       
+    public function findTags($data,$user_id)
+    {
+        $arrTags = explode(',', $data);
+        
+        foreach ($arrTags as &$item){
+          $item = trim($item);
+        }
+        
+        $tag = $arrTags[count($arrTags)-1];
+        
+        $sql = "SELECT `title` FROM `tags` WHERE
+        `title` like CONCAT('%',?,'%') AND `user_id` = ?";
+        $result = DB::getInstance()->Select($sql,[$tag,$user_id]);
+        
+        return $result;
+    }
     
 }
 

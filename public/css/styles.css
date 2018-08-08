@@ -1,3 +1,14 @@
 #inpArticleTags{
-    font-size: 24px;
+    font-size: 22px;
+}
+
+#inpArticleID{
+    font-size: 22px;
+}
+
+#inpArticleTitle{
+    font-size: 22px;
+}
+#inpArticleStatus{
+    font-size: 22px;
 }
